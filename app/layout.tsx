@@ -1,11 +1,15 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { DM_Sans, Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 
+const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans' })
+const cormorant = Cormorant_Garamond({ subsets: ['latin'], variable: '--font-cormorant' })
+
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'The Margin — Independent Bookshop',
+  description: 'Thoughtfully chosen stories, ideas, and objects for curious minds.',
+  generator: 'The Margin',
   icons: {
     icon: [
       {
@@ -39,8 +43,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html lang="en" className={`${dmSans.variable} ${cormorant.variable} bg-background`}>
+      <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
